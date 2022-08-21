@@ -72,9 +72,14 @@ public class KeysDialog{
 		JButton newmouse = new JButton("Add Mouse Button");
 		newmouse.addActionListener(e->showAddMouseButtonDialog(model));
 		JPanel nbuttons = new JPanel(new GridLayout(1, 2, 2, 0));
+		JButton settenkeyless = new JButton("Tenkeyless key Setting");
+		settenkeyless.addActionListener(e->setTenkeylessButtonDialog(model));
+		JPanel sbutton = new JPanel(new GridLayout(2, 1));
 		nbuttons.add(newkey, BorderLayout.LINE_START);
 		nbuttons.add(newmouse, BorderLayout.LINE_END);
-		keyform.add(nbuttons, BorderLayout.PAGE_END);
+		sbutton.add(nbuttons, BorderLayout.PAGE_START);
+		sbutton.add(settenkeyless, BorderLayout.PAGE_END);
+		keyform.add(sbutton, BorderLayout.PAGE_END);
 		
 		if(!Dialog.showSaveDialog(keyform, true)){
 			for(int i = 0; i < copy.size(); i++){
@@ -168,6 +173,15 @@ public class KeysDialog{
 			}
 			model.fireTableDataChanged();
 		}
+	}
+	
+	/**
+	 * Setting defautl Tenkeyless key setting
+	 * @author Richsea
+	 */
+	private static void setTenkeylessButtonDialog(KeysModel model)
+	{
+		
 	}
 	
 	/**
