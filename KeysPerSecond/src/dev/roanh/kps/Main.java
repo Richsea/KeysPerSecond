@@ -722,7 +722,7 @@ public class Main{
 		all.add(buttons, BorderLayout.LINE_END);
 		form.add(all, BorderLayout.CENTER);
 		layout.addActionListener((e)->{
-			LayoutDialog.configureLayout(false);
+			LayoutDialog.configureLayout(false);	// layout 버튼을 클릭했을 때
 		});
 		cmdkeys.addActionListener((e)->{
 			configureCommandKeys();
@@ -734,13 +734,13 @@ public class Main{
 			configureGraph();
 		});
 		addkey.addActionListener((e)->{
-			KeysDialog.configureKeys();
+			KeysDialog.configureKeys();	// Add 버튼을 클릭했을 때
 		});
 		color.addActionListener((e)->{
 			configureColors();
 		});
 		save.addActionListener((e)->{
-			config.saveConfig(false);
+			config.saveConfig(false);	// Add 버튼 클릭한 config 세팅 저장
 		});
 		load.addActionListener((e)->{
 			if(!Configuration.loadConfiguration()){
@@ -788,7 +788,7 @@ public class Main{
 		exit.addActionListener(e->exit());
 		
 		CountDownLatch latch = new CountDownLatch(1);
-		ok.addActionListener(e->latch.countDown());
+		ok.addActionListener(e->latch.countDown());	
 		
 		JPanel bottomButtons = new JPanel();
 		bottomButtons.add(ok);

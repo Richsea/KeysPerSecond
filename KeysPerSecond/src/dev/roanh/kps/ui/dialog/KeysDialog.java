@@ -37,6 +37,7 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import dev.roanh.kps.CommandKeys;
 import dev.roanh.kps.KeyInformation;
 import dev.roanh.kps.Main;
+import dev.roanh.kps.RenderingMode;
 import dev.roanh.util.Dialog;
 
 /**
@@ -176,12 +177,57 @@ public class KeysDialog{
 	}
 	
 	/**
-	 * Setting defautl Tenkeyless key setting
+	 * Setting defaultl Tenkeyless key setting
 	 * @author Richsea
 	 */
 	private static void setTenkeylessButtonDialog(KeysModel model)
-	{
+	{	
+		int [][] wkeyCode =
+			{{41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14},  // number
+				{15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 43}, // qwerty
+				{58, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 28},	// asdfg
+				{42, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 3638}	//zxcvb
+			};
 		
+		int[] skeyCode = {29, 3675, 56, 57, 112, 121}; // spacebar
+		int[] ckeyCode = {57419, 57424, 57421, 57416};	// cursor control key : up, left, right, down
+		int[][] okeyCode = {{3666, 3655, 3657}, {3667, 3663, 3665}};	// other
+
+		for(int i = 0; i < wkeyCode.length; i++)
+		{
+			KeyInformation.autoIndex = -2;
+			for(int code : wkeyCode[i])
+			{
+				KeyInformation wInfo = new KeyInformation(NativeKeyEvent.getKeyText(code), code, KeyInformation.autoIndex += 2, (wkeyCode.length - i) * 3, 'W');	//Writer key
+				Main.config.keyinfo.add(wInfo);
+			}
+		}
+		
+		KeyInformation.autoIndex = -2;
+		for(int code: skeyCode)
+		{
+			KeyInformation sInfo = new KeyInformation(NativeKeyEvent.getKeyText(code), code, KeyInformation.autoIndex += 2, 0, 'S');	// speciacl Key (space bar)
+			Main.config.keyinfo.add(sInfo);
+		}
+		
+		KeyInformation.autoIndex += 3;
+		int otherKeyX = KeyInformation.autoIndex;	// cursor key & other key X location
+		for(int code : ckeyCode)
+		{
+			KeyInformation cInfo = new KeyInformation(NativeKeyEvent.getKeyText(code), code, KeyInformation.autoIndex += 2, 0, 'C');	// cursor key
+			Main.config.keyinfo.add(cInfo);
+		}
+		
+		for(int i = 0; i < okeyCode.length; i++)
+		{
+			KeyInformation.autoIndex = otherKeyX;
+			for(int code : okeyCode[i])
+			{
+				KeyInformation oInfo = new KeyInformation(NativeKeyEvent.getKeyText(code), code, KeyInformation.autoIndex += 2, 12 - (i*3), 'O');
+				Main.config.keyinfo.add(oInfo);
+			}
+		}
+		model.fireTableDataChanged();
 	}
 	
 	/**

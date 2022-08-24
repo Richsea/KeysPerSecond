@@ -88,6 +88,70 @@ public final class KeyInformation extends Positionable{
 		this.keycode = code;
 		this.visible = visible;
 	}
+	
+	/**
+	 * Construct a new TenkeylessInform
+	 * @param name The name of the key
+	 * @param code The virutal key code of the key
+	 * 
+	 */
+	public KeyInformation(String name, int code, int x, int y, char t)
+	{
+		super(x, y, 2, 3, RenderingMode.VERTICAL);		
+		
+		this.keycode = CommandKeys.getExtendedKeyCode(code, false, false, false);
+		this.name = getKeyName(name, keycode);
+		
+		if(t == 'W')
+		{
+			if(code == 15 || code == 43 || code == 58)
+			{
+				this.setWidth(4);
+				autoIndex += 2;
+			}
+			else if(code == 14 || code == 28 || code == 42 || code == 3638)
+			{
+				this.setWidth(6);
+				autoIndex += 4;
+			}
+		}
+		else if(t == 'S')
+		{
+			if(code == 29 || code == 56 || code == 3675)
+			{
+				this.keycode = CommandKeys.getExtendedKeyCode(code, false, false, false);
+				this.name = getKeyName(name, keycode);
+				autoIndex += 1;
+			}
+			else if(code == 112)
+			{
+				this.keycode = CommandKeys.getExtendedKeyCode(code, false, false, false);
+				this.name = "한/영";
+				autoIndex += 1;
+			}
+			else if(code == 121)
+			{
+				this.keycode = CommandKeys.getExtendedKeyCode(code, false, false, false);
+				this.name = "한자";
+				autoIndex += 1;
+			}
+			else if(code == 57)
+			{
+				this.keycode = CommandKeys.getExtendedKeyCode(code, false, false, false);
+				this.name = "SPACE BAR";
+				this.setWidth(14);
+				autoIndex += 13;
+			}
+		}
+		else if(t == 'C')
+		{
+			if(code == 57416)
+			{
+				this.setY(3);
+				this.setX(autoIndex - 4);
+			}
+		}
+	}
 
 	/**
 	 * Constructs the key name from the key
