@@ -722,7 +722,7 @@ public class Main{
 		all.add(buttons, BorderLayout.LINE_END);
 		form.add(all, BorderLayout.CENTER);
 		layout.addActionListener((e)->{
-			LayoutDialog.configureLayout(false);	// layout 버튼을 클릭했을 때
+			LayoutDialog.configureLayout(false);
 		});
 		cmdkeys.addActionListener((e)->{
 			configureCommandKeys();
@@ -734,13 +734,13 @@ public class Main{
 			configureGraph();
 		});
 		addkey.addActionListener((e)->{
-			KeysDialog.configureKeys();	// Add 버튼을 클릭했을 때
+			KeysDialog.configureKeys();
 		});
 		color.addActionListener((e)->{
 			configureColors();
 		});
 		save.addActionListener((e)->{
-			config.saveConfig(false);	// Add 버튼 클릭한 config 세팅 저장
+			config.saveConfig(false);
 		});
 		load.addActionListener((e)->{
 			if(!Configuration.loadConfiguration()){
