@@ -65,15 +65,15 @@ public class Configuration{
 	/**
 	 * Whether or not to show the max value
 	 */
-	public boolean showMax = true;
+	public boolean showMax = false;
 	/**
 	 * Whether or not to show the average value
 	 */
-	public boolean showAvg = true;
+	public boolean showAvg = false;
 	/**
 	 * Whether or not to show the current value
 	 */
-	public boolean showCur = true;
+	public boolean showCur = false;
 	/**
 	 * Whether or not to show the keys
 	 */
@@ -101,7 +101,7 @@ public class Configuration{
 	/**
 	 * Whether or not to show the total number of hits
 	 */
-	public boolean showTotal = false;
+	public boolean showTotal = true;
 	/**
 	 * Whether or not the enable tracking key-modifier combinations
 	 */
@@ -147,27 +147,38 @@ public class Configuration{
 	/**
 	 * Reset stats command key
 	 */
-	protected CMD CP = new CMD(NativeKeyEvent.VC_P, false, true);
+	//protected CMD CP = new CMD(NativeKeyEvent.VC_P , false, false);
+	protected CMD CP = CMD.NONE;
+	
 	/**
 	 * Reset totals command key
 	 */
-	protected CMD CI = new CMD(NativeKeyEvent.VC_I, false, true);
+	//protected CMD CI = new CMD(NativeKeyEvent.VC_I , false, false);
+	protected CMD CI = CMD.NONE;
+	
 	/**
 	 * Exit command key
 	 */
-	protected CMD CU = new CMD(NativeKeyEvent.VC_U, false, true);
+	//protected CMD CU = new CMD(NativeKeyEvent.VC_U , false, false);
+	protected CMD CU = CMD.NONE;
+	
 	/**
 	 * Hide/show command key
 	 */
-	protected CMD CY = new CMD(NativeKeyEvent.VC_Y, false, true);
+	//protected CMD CY = new CMD(NativeKeyEvent.VC_Y, false, false);
+	protected CMD CY = CMD.NONE;
+	
 	/**
 	 * Pause command key
 	 */
-	protected CMD CT = new CMD(NativeKeyEvent.VC_T, false, true);
+	//protected CMD CT = new CMD(NativeKeyEvent.VC_T, false, false);
+	protected CMD CT = CMD.NONE;
+	
 	/**
 	 * Reload command key
 	 */
-	protected CMD CR = new CMD(NativeKeyEvent.VC_R, false, true);
+	//protected CMD CR = new CMD(NativeKeyEvent.VC_R , false, false);
+	protected CMD CR = CMD.NONE;
 
 	//special panels / layout
 	/**
